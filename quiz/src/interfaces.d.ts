@@ -10,4 +10,7 @@ interface SuccessLogin {
 interface ApiResponse {
     success: boolean;
   }
-export {LoginUserProps, SuccessLogin, ApiResponse }
+interface ProfilProps{
+    quizName: string;
+}
+export {LoginUserProps, SuccessLogin, ApiResponse, ProfilProps }

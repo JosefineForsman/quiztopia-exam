@@ -16,6 +16,7 @@ function CreateUser(){
         if (success) {
           setSuccess(true);
           setMessage(`User ${username} is now created`)
+          sessionStorage.setItem('username', username)
         } else {
           setMessage('Could not create user, username aldready exists.')
         }
@@ -25,6 +26,7 @@ function CreateUser(){
         <section className="create-user">
           {!success && (
             <article className="login-user__container">
+                <p>Create User component</p>
               <input
                 type="text"
                 placeholder="Username"

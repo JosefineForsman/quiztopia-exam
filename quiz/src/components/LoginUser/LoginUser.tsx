@@ -19,7 +19,7 @@ function LoginUser({ username, password }: LoginUserProps) {
     }
     if(data.token){
         setToken(data.token);
-        localStorage.setItem('token', data.token);
+        sessionStorage.setItem('token', data.token);
         console.log(token);
     } else{
         setMessage('You were not able to sign in')
