@@ -23,6 +23,7 @@ function Profil(){
     const addNewQuiz = () => {
         createQuiz(quizName);
         console.log(quizName);
+
         // Använd sessionStorage.setItem för att spara quizId som en array
         const quizIds = sessionStorage.getItem('quizIds');
         if (quizIds) {
@@ -30,22 +31,21 @@ function Profil(){
           quizIdArray.push(quizName);
           sessionStorage.setItem('quizIds', JSON.stringify(quizIdArray))
           console.log(JSON.stringify(sessionStorage.quizIds));
-            
-        setQuizName(''); // Återställer quizName till en tom sträng efter att knappen har tryckts
+          
+          setQuizName(''); 
         } else {
           sessionStorage.setItem('quizIds', JSON.stringify([quizName]));
         }
       };
 
       const toggleMyQuizzes = () => {
-        setShowMyQuizzes(!showMyQuizzes); // Invertera värdet på showMyQuizzes när knappen klickas
+        setShowMyQuizzes(!showMyQuizzes); 
       };
 
       const logOut = () => {
-        sessionStorage.removeItem('username'); // Ta bort användarnamnet från sessionStorage
-        sessionStorage.removeItem('token'); // Ta bort token från sessionStorage
+        sessionStorage.removeItem('username'); 
+        sessionStorage.removeItem('token');
         navigate('/')
-        // Resten av koden...
       };
 
     return(
@@ -58,7 +58,7 @@ function Profil(){
                 onChange={getQuizName} />
                 <button onClick={addNewQuiz}>ADD QUIZ</button>
                 <button onClick={toggleMyQuizzes}>MY QUIZES</button>
-                {showMyQuizzes && <MyQuizzes />} {/* Visa MyQuizzes om showMyQuizzes är true */}
+                {showMyQuizzes && <MyQuizzes />}
                 <button onClick={logOut}>LOG OUT</button>
             </article>
         </section>
