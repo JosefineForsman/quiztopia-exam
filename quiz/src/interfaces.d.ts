@@ -1,6 +1,7 @@
 interface LoginUserProps {
     username?: string;
     password?: string;
+    fromCreateUser?: boolean; // Ny flagga för att indikera om användaren kommer från CreateUser
   }
 interface SuccessLogin {
     success: boolean;
@@ -13,4 +14,43 @@ interface ApiResponse {
 interface ProfilProps{
     quizName: string;
 }
-export {LoginUserProps, SuccessLogin, ApiResponse, ProfilProps }
+
+interface GeolocationState {
+    latitude: number | null;
+    longitude: number | null;
+    error: string | null;
+  }
+  export interface Coordinates{
+    latitude: number,
+    longitude: number
+}
+interface QuizResponse {
+    success: boolean;
+    quiz: {
+      Attributes: {
+        questions: Array<{
+          question: string;
+          answer: string;
+          location: {
+            longitude: string;
+            latitude: string;
+          };
+        }>;
+        userId: string;
+        quizId: string;
+      };
+    };
+  }
+  interface Quiz {
+    questions: {
+      question: string;
+      answer: string;
+      location: {
+        longitude: string;
+        latitude: string;
+      };
+    }[];
+    userId: string;
+    quizId: string;
+  }
+export {LoginUserProps, SuccessLogin, ApiResponse, ProfilProps, GeolocationState, Coordinates, QuizResponse, Quiz }

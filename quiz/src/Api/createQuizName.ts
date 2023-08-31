@@ -5,7 +5,6 @@ const createQuiz = async (quizName:string) => {
     const info = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify({ name: quizName })

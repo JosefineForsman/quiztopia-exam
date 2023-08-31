@@ -1,0 +1,12 @@
+.form{
+    display: flex;
+    flex-direction: column;
+}
+.quiz-form__container{
+    background-color: rgb(247, 144, 8);
+    width: 100%;
+}
+.quiz-form__mapbox{
+    background-color: aqua;
+    width: 100%;
+}
