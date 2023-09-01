@@ -2,34 +2,37 @@ import './QuizForm.css';
 import { useState } from 'react';
 import { sendQuizQuestion } from '../../Api/createQuestion';
 
-function QuizForm(){
+interface QuizFormProps{
+    newLat: number;
+    newLng: number;
+    setNewLat: React.Dispatch<React.SetStateAction<number>>;
+    setNewLng: React.Dispatch<React.SetStateAction<number>>;
+}
+function QuizForm({newLat, newLng}: QuizFormProps){
     const [question, setQuestion] = useState<string>('');
     const [answer, setAnswer] = useState<string>('');
 
     const handleQuestion = async () => {
         console.log('handleQuestion called'); 
         try {
-          const latitude = sessionStorage.getItem('latitude');
-          const longitude = sessionStorage.getItem('longitude');
           const quizId = sessionStorage.getItem('quizId');
+          const newLatString = newLat.toString();
+          const newLngString = newLng.toString();
           
-
-          console.log(`Latitude: ${ typeof latitude}, Longitude: ${ typeof longitude}, QuizId: ${quizId}`, answer, question); // Add this line
-    
-          if (question && answer && latitude && longitude && quizId) {
-            sessionStorage.setItem('question', question); // Save the question value
-            sessionStorage.setItem('answer', answer)
-            await sendQuizQuestion(quizId, question, answer, longitude, latitude);
-
-            // Handle successful handling if needed
-          } else {
-            console.log('något saknas')
-            // Handle incorrect values if needed
-          }
+          if (question && answer && newLatString && newLngString && quizId) {
+              sessionStorage.setItem('question', question);
+              sessionStorage.setItem('answer', answer)
+              console.log()
+              await sendQuizQuestion(quizId, question, answer, newLatString, newLngString);
+              
+            } else {
+                console.log('något saknas')
+            }
+            console.log(`Latitude: ${newLatString}, Longitude: ${newLngString}, QuizId: ${quizId}`, answer, question); // Add this line
         } catch (error) {
-          // Handle error if needed
+            console.log('Error:' , error)
         }
-      };
+    };
 
     return(
         <section className='quiz-form'>

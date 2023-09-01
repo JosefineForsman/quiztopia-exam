@@ -10,8 +10,8 @@ async function getPosition(): Promise<Coordinates>{
                     latitude: pos.coords.latitude,
                     longitude: pos.coords.longitude
                 }
-                sessionStorage.setItem('latitude', JSON.stringify(position.latitude));
-                sessionStorage.setItem('longitude', JSON.stringify(position.longitude));
+                sessionStorage.setItem('latitude', position.latitude.toString());
+                sessionStorage.setItem('longitude', position.longitude.toString());
 
                 resolve(position)
                 console.log(position)

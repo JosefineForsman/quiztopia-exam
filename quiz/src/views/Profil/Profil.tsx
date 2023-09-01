@@ -3,6 +3,7 @@ import { ChangeEvent, useState, useEffect } from 'react';
 import { createQuiz } from '../../Api/createQuizName';
 import { useNavigate } from 'react-router-dom';
 import Quizzes from '../../components/Quizzes/Quizzes';
+import { getAllQuizzes } from '../../Api/getAllquizzes';
 function Profil(){
     const [quizName, setQuizName] = useState<string>('');
     const [username, setUsername] = useState<string>('');
@@ -30,6 +31,8 @@ function Profil(){
 
       const toggleMyQuizzes = () => {
         setShowMyQuizzes(!showMyQuizzes); 
+        getAllQuizzes();
+
       };
 
       const logOut = () => {

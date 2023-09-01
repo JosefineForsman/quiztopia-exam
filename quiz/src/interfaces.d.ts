@@ -53,4 +53,10 @@ interface QuizResponse {
     userId: string;
     quizId: string;
   }
-export {LoginUserProps, SuccessLogin, ApiResponse, ProfilProps, GeolocationState, Coordinates, QuizResponse, Quiz }
+  interface Quizzes{
+    success:boolean;
+    quizzes: Quiz[]
+}
+
+export {LoginUserProps, SuccessLogin, ApiResponse, ProfilProps, 
+    GeolocationState, Coordinates, QuizResponse, Quiz , Quizzes }

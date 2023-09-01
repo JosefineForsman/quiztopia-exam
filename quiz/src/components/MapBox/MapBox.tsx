@@ -4,23 +4,27 @@ import './MapBox.css';
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN as string;
 
-function MapBox() {
-  const latitude = sessionStorage.getItem('latitude');
-  const longitude = sessionStorage.getItem('longitude');
+interface MapBoxProps {
+    setNewLat: React.Dispatch<React.SetStateAction<number>>;
+    setNewLng: React.Dispatch<React.SetStateAction<number>>;
+  }
 
-  const [lat, setLat] = useState<number>(parseFloat(latitude) || 0);
-  const [lng, setLng] = useState<number>(parseFloat(longitude) || 0);
-  const [zoom, setZoom] = useState<number>(9);
-  const [newLat, setNewLat] = useState(0);
-  const [newLng, setNewLng] = useState(0);
-  const [markers, setMarkers] = useState<mapboxgl.LngLat[]>([]);
+function MapBox({setNewLng, setNewLat}: MapBoxProps) {
+    // Hämta värdet för latitud från sessionStorage och konvertera det till ett tal
+    const latitude = parseFloat(sessionStorage.getItem('latitude')?.toString() ?? '') || 0;
+    const longitude = parseFloat(sessionStorage.getItem('longitude')?.toString() ?? '') || 0;
+  
+    const [lat, setLat] = useState<number>(latitude);
+    const [lng, setLng] = useState<number>(longitude);
+    const [zoom, setZoom] = useState<number>(9);
+    const [markers, setMarkers] = useState<mapboxgl.LngLat[]>([]);
 
-  console.log(lat);
-  console.log(lng);
+    console.log(lat);
+    console.log(lng);
 
-  const mapContainer = useRef<HTMLDivElement>(null);
-  const mapRef = useRef<MapGl | null>(null);
-  const markerRef = useRef<mapboxgl.Marker | null>(null);
+    const mapContainer = useRef<HTMLDivElement>(null);
+    const mapRef = useRef<MapGl | null>(null);
+    const markerRef = useRef<mapboxgl.Marker | null>(null);
 
   useEffect(() => {
     if (mapRef.current || !mapContainer.current) return;
@@ -70,7 +74,6 @@ function MapBox() {
       <p>Mapbox</p>
       <div ref={mapContainer} style={{ height: '500px' }} className='map-container'></div>
       <p>Center position: {lat} lat, {lng} long:</p>
-      <p>New position: {newLat} lat, {newLng} long:</p>
     </section>
   );
 }
