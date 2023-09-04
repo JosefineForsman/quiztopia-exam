@@ -1,0 +1,8 @@
+.quizzes{
+    border: 1px solid black;
+}
+  .map-container {
+    height: 500px;
+    position: relative; /* Add this property */
+    overflow: hidden; /* Add this property */
+}

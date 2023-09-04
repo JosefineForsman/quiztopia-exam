@@ -1,7 +1,6 @@
 interface LoginUserProps {
     username?: string;
     password?: string;
-    fromCreateUser?: boolean; // Ny flagga för att indikera om användaren kommer från CreateUser
   }
 interface SuccessLogin {
     success: boolean;

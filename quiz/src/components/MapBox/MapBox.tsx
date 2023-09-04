@@ -52,16 +52,17 @@ function MapBox({setNewLng, setNewLat}: MapBoxProps) {
     });
 
     map.on('click', (e) => {
-        console.log('Clicked coordinates:', e.lngLat);
-        setNewLat(e.lngLat.lat);
-        setNewLng(e.lngLat.lng);
-        setMarkers([...markers, e.lngLat]);
+      setNewLat(e.lngLat.lat);
+      setNewLng(e.lngLat.lng);
+      console.log('Clicked coordinates:', e.lngLat);
+      setMarkers([...markers, e.lngLat]);
     });
-  }, [lat, lng, zoom, setLat, setLng, setZoom]);
+  }, [lng, lat, zoom, setLng, setLat, setZoom, setNewLat, setNewLng]);
+  console.log(markers)
 
   useEffect(() => {
     if (mapRef.current && markers.length > 0) {
-      markers.map((markerCoords) => (
+      markers.forEach((markerCoords) => (
         new mapboxgl.Marker()
           .setLngLat(markerCoords)
           .addTo(mapRef.current as MapGl)

@@ -3,12 +3,12 @@ import { useState } from 'react';
 import { sendQuizQuestion } from '../../Api/createQuestion';
 
 interface QuizFormProps{
-    newLat: number;
     newLng: number;
+    newLat: number;
     setNewLat: React.Dispatch<React.SetStateAction<number>>;
     setNewLng: React.Dispatch<React.SetStateAction<number>>;
 }
-function QuizForm({newLat, newLng}: QuizFormProps){
+function QuizForm({newLng,newLat}: QuizFormProps){
     const [question, setQuestion] = useState<string>('');
     const [answer, setAnswer] = useState<string>('');
 
@@ -23,7 +23,7 @@ function QuizForm({newLat, newLng}: QuizFormProps){
               sessionStorage.setItem('question', question);
               sessionStorage.setItem('answer', answer)
               console.log()
-              await sendQuizQuestion(quizId, question, answer, newLatString, newLngString);
+              await sendQuizQuestion(quizId, question, answer,newLngString, newLatString);
               
             } else {
                 console.log('något saknas')
