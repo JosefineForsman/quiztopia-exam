@@ -1,0 +1,12 @@
+.create-user__input{
+    width: 250px;
+    padding:8px;
+    margin-bottom: 9px;
+}
+.create-user__btn{
+    border: 2px solid rgb(87, 11, 110);
+    width: 275px;
+}
+.create-user__btn:hover{
+    background-color:rgb(87, 11, 110);
+}

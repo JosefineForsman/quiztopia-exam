@@ -4,23 +4,24 @@ import LoginUser from '../../components/LoginUser/LoginUser';
 import CreateUser from '../../components/CreateUser/CreateUser';
 import { getPosition } from '../../Api/geolocation';
 import { getAllQuizzes } from '../../Api/getAllquizzes';
+import map from '../../assets/karta.svg'
 import './Landing.css';
 
 function Landing() {
-  const [showLoginUser, setShowLoginUser] = useState(true);
+  const [showLoginUser, setShowLoginUser] = useState(false);
   const [showCreateUser, setShowCreateUser] = useState(false);
 
   const navigate = useNavigate();
   getPosition()
 
   const handleLoginClick = () => {
-    setShowLoginUser(true);
+    setShowLoginUser(!showLoginUser);
     setShowCreateUser(false);
   };
 
   const handleSignUpClick = () => {
     setShowLoginUser(false);
-    setShowCreateUser(true);
+    setShowCreateUser(!showCreateUser);
   };
 
   const handlePlayNow = async () =>{
@@ -29,17 +30,17 @@ function Landing() {
   }
 
   return (
-    <section className="landing">
-      <p>Landing View</p>
-      <button onClick={handleLoginClick}>LOG IN</button>
-      <button onClick={handleSignUpClick}>SIGN UP</button>
-      <button onClick={handlePlayNow}>PLAY NOW</button>
-      {showLoginUser && <LoginUser />}
-      {showCreateUser && (
-        <>
-          <CreateUser />
-        </>
-      )}
+    <section className="landing" style={{ backgroundImage: `url(${map})` }}>
+      <header>
+        <h1>QUIZTOPIA</h1>
+      </header>
+      <aside className='landing-container'>
+          <button className='landing-btn' onClick={handleLoginClick}>LOG IN</button>
+          <button className='landing-btn' onClick={handleSignUpClick}>SIGN UP</button>
+          <button className='landing-btn' onClick={handlePlayNow}>PLAY NOW</button>
+      </aside>
+          {showLoginUser && <LoginUser />}
+          {showCreateUser && <CreateUser />}  
     </section>
   );
 }

@@ -1,8 +1,19 @@
 .quizzes{
     border: 1px solid black;
+    list-style: none;
+    background-color: rgba(213, 169, 244, 0.735);
+    color: black;
+    padding: 1rem;
+    width: 500px;
 }
   .map-container {
     height: 500px;
     position: relative; /* Add this property */
     overflow: hidden; /* Add this property */
+}
+.quizzes-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

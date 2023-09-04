@@ -1,0 +1,27 @@
+.landing{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+.landing-btn{
+    padding: 1rem 2rem;
+    margin-bottom:1rem;
+    width: 250px;
+}
+.landing-btn:hover{
+    border: 1px solid rgb(197, 72, 235);
+    background-color:rgb(87, 11, 110);
+
+}
+.landing-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}

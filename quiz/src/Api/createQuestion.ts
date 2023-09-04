@@ -1,22 +1,4 @@
 
-interface ApiResponse {
-  success: boolean;
-  quiz: {
-    Attributes: {
-      questions: {
-        question: string;
-        answer: string;
-        location: {
-          longitude: string;
-          latitude: string;
-        };
-      }[];
-      userId: string;
-      quizId: string;
-    };
-  };
-}
-
 const sendQuizQuestion = async (
   quizId: string,
   question: string,

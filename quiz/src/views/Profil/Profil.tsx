@@ -2,12 +2,13 @@ import './Profil.css';
 import { ChangeEvent, useState, useEffect } from 'react';
 import { createQuiz } from '../../Api/createQuizName';
 import { useNavigate } from 'react-router-dom';
-import Quizzes from '../../components/Quizzes/Quizzes';
 import { getAllQuizzes } from '../../Api/getAllquizzes';
+import Quizzes from '../../components/Quizzes/Quizzes';
 function Profil(){
     const [quizName, setQuizName] = useState<string>('');
     const [username, setUsername] = useState<string>('');
     const [showMyQuizzes, setShowMyQuizzes] = useState<boolean>(false);
+
 
     const navigate = useNavigate();
 
@@ -49,15 +50,15 @@ function Profil(){
     return(
         <section className="profil">
             <p>Profil View</p>
-            <p>Välkommen {username}</p>
+            <p>Välkommen</p>
             <article className='profil-container'>
                 <input type="text" placeholder='Name on new quiz'
                 value={quizName}
                 onChange={getQuizName} />
                 <button onClick={addNewQuiz}>ADD QUIZ</button>
                 <button onClick={toggleMyQuizzes}>MY QUIZES</button>
-                {showMyQuizzes && <Quizzes />}
                 <button onClick={logOut}>LOG OUT</button>
+                {showMyQuizzes &&  <Quizzes/>}
             </article>
         </section>
 

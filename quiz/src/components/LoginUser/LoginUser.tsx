@@ -31,15 +31,22 @@ function LoginUser() {
 
   return (
     <section className="login-user">
-      <p>Login User Component</p>
       <article className="login-user__container">
-        <input
-          type="text"
-          placeholder="Username"
-          value={username} onChange={(e) => setUsername(e.target.value)} />
-        <input type="text" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <button onClick={logIn}>Log in</button>
-        <p>{message}</p>
+        <h2 className='login-user__title'>Log in:</h2>
+        <input 
+            className='login-user__input'
+            type="text"
+            placeholder="Username"
+            value={username} 
+            onChange={(e) => setUsername(e.target.value)} />
+          <input 
+            className='login-user__input'
+            type="text" 
+            placeholder="Password" 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} />
+          <button className='login-user__btn'onClick={logIn}>Log in</button>
+          <p>{message}</p>
       </article>
     </section>
   );

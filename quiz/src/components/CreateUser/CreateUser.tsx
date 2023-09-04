@@ -27,20 +27,24 @@ function CreateUser() {
     <section className="create-user">
       {!success && (
         <article className="login-user__container">
-          <p>Create User component</p>
+          <h2>Create user:</h2>
           <input
+            className='create-user__input'
             type="text"
             placeholder="Username"
             value={username}
             onChange={(e) => setUserName(e.target.value)}
           />
           <input
+            className='create-user__input'
             type="text"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button onClick={createNewUser}>Submit</button>
+          <button 
+          className='create-user__btn'
+          onClick={createNewUser}>Submit</button>
           <p>{message}</p>
         </article>
       )}
