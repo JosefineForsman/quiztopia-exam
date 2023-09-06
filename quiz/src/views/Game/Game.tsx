@@ -5,13 +5,6 @@ import { useNavigate } from 'react-router-dom';
 function Game(){
     const navigate = useNavigate()
     const logOut = () => {
-        sessionStorage.removeItem('username'); 
-        sessionStorage.removeItem('token');
-        sessionStorage.removeItem('longitude');
-        sessionStorage.removeItem('quizId');
-        sessionStorage.removeItem('answer');
-        sessionStorage.removeItem('question');
-        sessionStorage.removeItem('latitude');
         navigate('/')
       };
     return(
@@ -20,7 +13,7 @@ function Game(){
                 <h1>Game on!</h1>
             </header>
             <Quizzes/>
-            <button onClick={logOut}>Log out</button>
+            <button onClick={logOut}>Go back</button>
         </section>
 
     )

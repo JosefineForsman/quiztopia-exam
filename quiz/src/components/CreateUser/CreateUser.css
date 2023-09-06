@@ -2,11 +2,65 @@
     width: 250px;
     padding:8px;
     margin-bottom: 9px;
+    font-family: poppins;
+    border: 1px solid rgba(0, 0, 0, 0.227);
+    color: rgba(0, 0, 0, 0.362);
 }
 .create-user__btn{
-    border: 2px solid rgb(87, 11, 110);
-    width: 275px;
+    width: 150px;
+    background-color: rgb(175, 37, 217);
+    color:white;
+    border-radius: 50px;
+    padding: 10px;
+    border: none;
+    font-family: poppins;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 .create-user__btn:hover{
     background-color:rgb(87, 11, 110);
+}
+.create-user__img{
+    width: 4rem;
+}
+.create-user__container{
+    width: 600px;
+    height: 500px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.create-user{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.create-user__login{
+    margin-top:1.5rem;
+    font-family: manjari;
+    color: rgba(0, 0, 0, 0.362);
+    font-size: 15px;
+}
+.create-user__login-btn{
+    border: 1px solid rgba(0, 0, 0, 0.206);
+    border-radius: 10px;
+    padding: 3px 7px;
+    width: 60px;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.362);
+    font-family: poppins;
+    margin-left:10px;
+}
+.create-user__title{
+    font-family: poppins;
+    font-weight: 300;
+}
+.create-user__sub-title{
+    font-family: manjari;
+    color: rgba(0, 0, 0, 0.362);
 }

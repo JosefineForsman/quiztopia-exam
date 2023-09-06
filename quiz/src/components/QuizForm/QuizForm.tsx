@@ -22,7 +22,6 @@ function QuizForm({newLng,newLat}: QuizFormProps){
           if (question && answer && newLatString && newLngString && quizId) {
               sessionStorage.setItem('question', question);
               sessionStorage.setItem('answer', answer)
-              console.log()
               await sendQuizQuestion(quizId, question, answer,newLngString, newLatString);
               
             } else {

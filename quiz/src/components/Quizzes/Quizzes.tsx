@@ -15,10 +15,14 @@ function Quizzes() {
   const [userId, setUserId] = useState<string>('');
   const [quizId, setQuizId] = useState<string>('');
   const [showMap, setShowMap] = useState<boolean>(false)
+  const [errorMessage, setErrorMessage] = useState<string>('');
+  // Lägg till en ny state-variabel för att spåra om felmeddelandet har visats.
+const [errorShown, setErrorShown] = useState<boolean>(false);
 
   const mapRef = useRef<MapGl | null>(null);
   const markerRef = useRef<mapboxgl.Marker | null>(null)
   const mapContainer = useRef<HTMLDivElement>(null);
+
 
   useEffect(() => {
     const fetchQuizzes = async () => {
@@ -28,6 +32,7 @@ function Quizzes() {
         console.log(quizzes);
       } catch (error) {
         console.error('Error fetching quizzes:', error);
+        setErrorMessage('Something went wrong')
       }
     };
 
@@ -57,49 +62,69 @@ function Quizzes() {
 
   }, [selectedCoords]);
 
-  useEffect(() => {
-    const createUserAsync = async () => {
-      if (userId) {
-        try {
-          const success = await deleteUserQuizById(quizId);
-          console.log(success);
-        } catch (error) {
-          console.error(error);
-        }
+  const handleQuiz = (quiz:Quiz)=>{
+    {
+      if (errorShown) {
+        // Återställ felmeddelandet om det har visats tidigare
+        setErrorShown(false);
       }
-    };
-  
-    createUserAsync();
-  }, [quizId]);
+      const coords = quiz.questions.map((question) => ({
+        latitude: parseFloat(question.location.latitude),
+        longitude: parseFloat(question.location.longitude),
+      }));
+      let hasInvalidCoords = false;
+
+      coords.forEach((coord) => {
+        if (
+          isNaN(coord.latitude) ||
+          isNaN(coord.longitude) ||
+          coord.longitude < -180 ||
+          coord.longitude > 180
+        ) {
+          hasInvalidCoords = true;
+        }
+      });
+    
+      if (hasInvalidCoords) {
+        setErrorMessage('Invalid coordinates, could not run maps. Pick another quiz.');
+        setErrorShown(true);
+        return;
+      }
+      setSelectedCoords(coords);
+      setShowMap(true);
+    }
+  }
 
   return (
     <div>
-      {showMap && (
-        <div ref={mapContainer} style={{ height: '500px' }} ></div>
-        )}
       <h2>Quizzes</h2>
+      {errorMessage && (
+        <div>
+          <h3 className="error">{errorMessage}</h3>
+          <button onClick={() => {
+            setErrorMessage(''); // Återställ felmeddelandet
+            setSelectedCoords([]); // Återställ koordinater
+            setUserId(''); // Återställ användar-ID
+            setQuizId(''); // Återställ quiz-ID
+            setShowMap(false); // Dölj kartan
+          }}>
+            Reset
+          </button>
+        </div>
+      )}
+       {showMap && (
+      <div ref={mapContainer} style={{ height: '500px' }}></div>
+      )}
       {quizzes ? (
         <ul>
           {quizzes.map((quiz, index) => (
             <li
               className='quizzes'
               key={index}
-              onClick={() => {
-                const coords = quiz.questions.map((question) => ({
-                  latitude: parseFloat(question.location.latitude),
-                  longitude: parseFloat(question.location.longitude),
-                }));
-                setSelectedCoords(coords);
-                setUserId(quiz.userId); // Set the userId
-                setQuizId(quiz.quizId); // Set the quizId
-                setShowMap(true);
-                console.log(coords);
-                console.log(quizId)
-                console.log(userId)
-              }}
+              onClick={ ()=> handleQuiz(quiz) }
             >
-              Name: {quiz.quizId}
-              <p>Creator: {quiz.userId}</p>
+              Name: {quiz.username}
+              <p>Creator: {quiz.quizId}</p>
             </li>
           ))}
         </ul>
@@ -109,5 +134,6 @@ function Quizzes() {
     </div>
   );
 }
+
 
 export default Quizzes;

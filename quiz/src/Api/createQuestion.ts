@@ -42,6 +42,8 @@ const sendQuizQuestion = async (
       throw new Error('Quiz question not added successfully');
     }
 
+    localStorage.setItem('quizObject', JSON.stringify(responseData));
+
   } catch (error) {
     console.error('Error:', error);
     throw error;

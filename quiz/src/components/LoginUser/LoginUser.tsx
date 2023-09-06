@@ -1,8 +1,9 @@
 import './LoginUser.css';
 import { SuccessLogin } from '../../interfaces';
 import { logInUser } from '../../Api/signUpUser';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import { useState } from 'react';
+import login from '../../assets/loginpurple.png'
 
 function LoginUser() {
   const [message, setMessage] = useState<string>('');
@@ -18,21 +19,24 @@ function LoginUser() {
 
     if (data.success) {
       setMessage('You are now signed in.');
-      navigate('/profil');
+      sessionStorage.setItem('username', username)
+      navigate('/profil'); // inkludera username i state
     }
     if (data.token) {
       setToken(data.token);
       sessionStorage.setItem('token', data.token);
       console.log(token);
     } else {
-      setMessage('You were not able to sign in');
+      setMessage('This username does not exist, if you do not have an account, go to sign in.');
     }
   };
 
   return (
     <section className="login-user">
       <article className="login-user__container">
-        <h2 className='login-user__title'>Log in:</h2>
+        <h2 className='login-user__title'>Welcome to Quiztopia!</h2>
+        <img src={login} alt="login-icon" className='login-user__img' />
+        <p className='login-user__sub-title'>Log in on your account</p>
         <input 
             className='login-user__input'
             type="text"

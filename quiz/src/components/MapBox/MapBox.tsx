@@ -18,6 +18,7 @@ function MapBox({setNewLng, setNewLat}: MapBoxProps) {
     const [lng, setLng] = useState<number>(longitude);
     const [zoom, setZoom] = useState<number>(9);
     const [markers, setMarkers] = useState<mapboxgl.LngLat[]>([]);
+    const [errorMessage, setErrorMessage] = useState<string>('');
 
     console.log(lat);
     console.log(lng);
@@ -73,6 +74,7 @@ function MapBox({setNewLng, setNewLat}: MapBoxProps) {
   return (
     <section className='mapbox'>
       <p>Mapbox</p>
+      {errorMessage && <p>{errorMessage}</p>}
       <div ref={mapContainer} style={{ height: '500px' }} className='map-container'></div>
       <p>Center position: {lat} lat, {lng} long:</p>
     </section>

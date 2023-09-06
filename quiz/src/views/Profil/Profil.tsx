@@ -1,26 +1,19 @@
 import './Profil.css';
-import { ChangeEvent, useState, useEffect } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { createQuiz } from '../../Api/createQuizName';
-import { useNavigate } from 'react-router-dom';
-import { getAllQuizzes } from '../../Api/getAllquizzes';
+import { useNavigate} from 'react-router-dom';
 import Quizzes from '../../components/Quizzes/Quizzes';
+import QuizIdItem from '../../components/QuizIdItem/QuizIdItem';
 function Profil(){
     const [quizName, setQuizName] = useState<string>('');
-    const [username, setUsername] = useState<string>('');
-    const [showMyQuizzes, setShowMyQuizzes] = useState<boolean>(false);
-
+    const [showQuizIdItem, setShowQuizIdItem] = useState(false);
+    const [showAllQuizzes, setShowAllQuizzes] = useState(false);
 
     const navigate = useNavigate();
 
     const getQuizName = (event: ChangeEvent<HTMLInputElement>)=>{
         setQuizName(event.target.value)
     }
-    useEffect(() => {
-        const storedUsername = sessionStorage.getItem('username');
-        if (storedUsername) {
-          setUsername(storedUsername);
-        }
-      }, []);
 
     const addNewQuiz = () => {
         createQuiz(quizName);
@@ -30,20 +23,18 @@ function Profil(){
         navigate('/form')
       };
 
-      const toggleMyQuizzes = () => {
-        setShowMyQuizzes(!showMyQuizzes); 
-        getAllQuizzes();
-
+      const toggleAllQuizzes = () => {
+        setShowAllQuizzes(!showAllQuizzes);
       };
 
       const logOut = () => {
         sessionStorage.removeItem('username'); 
         sessionStorage.removeItem('token');
         sessionStorage.removeItem('longitude');
-        sessionStorage.removeItem('quizId');
         sessionStorage.removeItem('answer');
         sessionStorage.removeItem('question');
         sessionStorage.removeItem('latitude');
+        sessionStorage.removeItem('quizId')
         navigate('/')
       };
 
@@ -56,9 +47,11 @@ function Profil(){
                 value={quizName}
                 onChange={getQuizName} />
                 <button onClick={addNewQuiz}>ADD QUIZ</button>
-                <button onClick={toggleMyQuizzes}>MY QUIZES</button>
+                <button onClick={() => setShowQuizIdItem(!showQuizIdItem)}>MY QUIZZES</button>
+                <button onClick={toggleAllQuizzes}>ALL QUIZZES</button>
                 <button onClick={logOut}>LOG OUT</button>
-                {showMyQuizzes &&  <Quizzes/>}
+                {showQuizIdItem &&  <QuizIdItem/>}
+                {showAllQuizzes && <Quizzes />}
             </article>
         </section>
 

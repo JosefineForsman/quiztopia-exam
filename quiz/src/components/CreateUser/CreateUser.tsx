@@ -2,6 +2,7 @@ import './CreateUser.css';
 import { useState } from 'react';
 import { createUser } from '../../Api/createUserFetch';
 import LoginUser from '../LoginUser/LoginUser';
+import create from '../../assets/purplecreate.png'
 
 function CreateUser() {
   const [username, setUserName] = useState<string>('');
@@ -23,11 +24,17 @@ function CreateUser() {
     }
   };
 
+  const goToLogin = () =>{
+    setShowLogin(true);
+  }
+
   return (
     <section className="create-user">
       {!success && (
-        <article className="login-user__container">
-          <h2>Create user:</h2>
+        <article className="create-user__container">
+          <h2 className='create-user__title'>Welcome to Quiztopia! </h2>
+          <img src={create} alt="create-user" className='create-user__img' />
+          <p className='create-user__sub-title'>Create an account</p>
           <input
             className='create-user__input'
             type="text"
@@ -44,8 +51,8 @@ function CreateUser() {
           />
           <button 
           className='create-user__btn'
-          onClick={createNewUser}>Submit</button>
-          <p>{message}</p>
+          onClick={createNewUser}>Sign in</button>
+          <p className='create-user__sub-title'>{message}</p>
         </article>
       )}
       {success && <LoginUser />}

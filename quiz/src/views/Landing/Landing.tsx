@@ -30,17 +30,17 @@ function Landing() {
   }
 
   return (
-    <section className="landing" style={{ backgroundImage: `url(${map})` }}>
+    <section className="landing" >
       <header>
-        <h1>QUIZTOPIA</h1>
+        <h1 className='landing__title'>QUIZTOPIA</h1>
       </header>
       <aside className='landing-container'>
           <button className='landing-btn' onClick={handleLoginClick}>LOG IN</button>
           <button className='landing-btn' onClick={handleSignUpClick}>SIGN UP</button>
           <button className='landing-btn' onClick={handlePlayNow}>PLAY NOW</button>
       </aside>
-          {showLoginUser && <LoginUser />}
           {showCreateUser && <CreateUser />}  
+          {showLoginUser && <LoginUser/>}
     </section>
   );
 }

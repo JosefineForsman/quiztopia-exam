@@ -51,6 +51,7 @@ interface QuizResponse {
     }[];
     userId: string;
     quizId: string;
+    username: string;
   }
   interface Quizzes{
     success:boolean;
