@@ -3,13 +3,12 @@ import { ChangeEvent, useState } from 'react';
 import { createQuiz } from '../../fetch/createQuizName';
 import { useNavigate} from 'react-router-dom';
 import QuizIdItem from '../../components/QuizIdItem/QuizIdItem';
-import goback from '../../assets/arrowback.png'
+
 function Profil(){
     const [quizName, setQuizName] = useState<string>('');
     const [showQuizIdItem, setShowQuizIdItem] = useState(false);
 
     const navigate = useNavigate();
-
     const name = sessionStorage.getItem('username')
 
     const getQuizName = (event: ChangeEvent<HTMLInputElement>)=>{
@@ -24,10 +23,6 @@ function Profil(){
         navigate('/form')
       };
 
-      const goBack  = ()=>{
-        navigate('/')
-      }
-
       const logOut = () => {
         sessionStorage.removeItem('username'); 
         sessionStorage.removeItem('token');
@@ -39,17 +34,10 @@ function Profil(){
         navigate('/')
       };
 
-      const goToGame = () =>{
-        navigate('/game')
-      }
-
     return(
         <section className="profil">
           <header className='profil__header'>
             <aside>
-              <img onClick={goBack}src={goback} alt="go-back-icon" className='go-back-icon' />
-              </aside>
-              <aside>
                 <h1 className='profil__title'>QUIZTOPIA</h1>
                 <h3 className='profil__text'>Welcome to your profil {name}!</h3>
             </aside>
@@ -57,7 +45,6 @@ function Profil(){
             <article className='profil-container'>
                 <button className='profil-btn' onClick={() => setShowQuizIdItem(!showQuizIdItem)}>MY QUIZZES</button>
                 <button className='profil-btn'onClick={logOut}>LOG OUT</button>
-                <button className='profil-btn' onClick={goToGame}>LET'S PLAY!</button>
             </article>
               <aside className='profil__add-quiz'>
                 <p className='profil__body-text'>To begin a new quiz, follow these steps:</p>

@@ -1,11 +1,10 @@
-
-const sendQuizQuestion = async (
+export async function sendQuizQuestion(
   quizId: string,
   question: string,
   answer: string,
   longitude: string,
   latitude: string
-): Promise<void> => {
+): Promise<void>{
   const token = sessionStorage.getItem('token');
 
   const data = {
@@ -34,9 +33,8 @@ const sendQuizQuestion = async (
     const responseData= await response.json();
     console.log(responseData)
     if (!response.ok) {
-      throw new Error('Request failed');
+      throw new Error(`Request failed with status ${response.status}: ${response.statusText}`);
     }
-
 
     if (!responseData.success) {
       throw new Error('Quiz question not added successfully');
@@ -48,6 +46,4 @@ const sendQuizQuestion = async (
     console.error('Error:', error);
     throw error;
   }
-};
-
-export { sendQuizQuestion };
+}

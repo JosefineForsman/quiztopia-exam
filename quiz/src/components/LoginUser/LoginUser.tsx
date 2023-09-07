@@ -20,7 +20,7 @@ function LoginUser() {
     if (data.success) {
       setMessage('You are now signed in.');
       sessionStorage.setItem('username', username)
-      navigate('/profil'); // inkludera username i state
+      navigate('/profil'); 
     }
     if (data.token) {
       setToken(data.token);
@@ -50,7 +50,7 @@ function LoginUser() {
             value={password} 
             onChange={(e) => setPassword(e.target.value)} />
           <button className='login-user__btn'onClick={logIn}>Log in</button>
-          <p>{message}</p>
+          <p className='login-user__message'>{message}</p>
       </article>
     </section>
   );

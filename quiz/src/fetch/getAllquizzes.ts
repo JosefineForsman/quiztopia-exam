@@ -1,6 +1,6 @@
 import { Quizzes } from "../interfaces";
 
-async function getAllQuizzes(): Promise<Quizzes> {
+export async function getAllQuizzes(): Promise<Quizzes> {
     try {
       const url: string = `https://fk7zu3f4gj.execute-api.eu-north-1.amazonaws.com/quiz`;
       const response = await fetch(url);
@@ -8,7 +8,7 @@ async function getAllQuizzes(): Promise<Quizzes> {
       if (!response.ok) {
           throw new Error(`${response.status} ${response.statusText}`);
         }
-        
+          
         const data = await response.json();
         console.log(data);
     
@@ -18,4 +18,3 @@ async function getAllQuizzes(): Promise<Quizzes> {
       throw error;
     }
   }
-export {getAllQuizzes}

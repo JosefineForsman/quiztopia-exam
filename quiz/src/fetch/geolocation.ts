@@ -1,6 +1,6 @@
 import { Coordinates } from '../interfaces';
 
-async function getPosition(): Promise<Coordinates>{
+export async function getPosition(): Promise<Coordinates>{
     return new Promise((resolve, reject)=>{
         if ('geolocation' in navigator){
             const geo = navigator.geolocation;
@@ -24,4 +24,3 @@ async function getPosition(): Promise<Coordinates>{
         }
     })
 }
-export {getPosition};

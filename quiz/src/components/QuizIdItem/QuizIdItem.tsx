@@ -4,14 +4,12 @@ import {useState, useEffect} from 'react';
 import { getAllQuizzes } from '../../fetch/getAllquizzes';
 import { deleteUserQuizById } from '../../fetch/deleteQuiz';
 
-
 function QuizIdItem(){
     const username = sessionStorage.getItem('username')
     console.log(username);
     const [myQuizzes, setMyQuizzes] = useState<Quiz[]>([]);
     const [deleteMessage, setDeleteMessage] = useState<string>('')
-
-    
+ 
     useEffect(() => {
         async function fetchData() {
           try {
@@ -54,9 +52,9 @@ function QuizIdItem(){
           <section className='my-quizzes'>
             <h3 className='my-guizzes__subtitle'>My quizzes:</h3>
             {myQuizzes.map((quiz, index) => (
-                <div className='my-quizzes__container'key={index}>
-                <p className='my-quizzes__title'>Quiz name: {quiz.quizId}</p>
-                <button className='my-quizzes__delete-btn' onClick={() => deleteUserQuiz(quiz.quizId)}>Delete</button>
+            <div className='my-quizzes__container'key={index}>
+              <p className='my-quizzes__title'>Quiz name: {quiz.quizId}</p>
+              <button className='my-quizzes__delete-btn' onClick={() => deleteUserQuiz(quiz.quizId)}>Delete</button>
             </div>
             ))}
             <p className='my-quizzes__delete-message'>{deleteMessage}</p>

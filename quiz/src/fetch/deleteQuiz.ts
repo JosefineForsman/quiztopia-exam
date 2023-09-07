@@ -1,4 +1,4 @@
-export const deleteUserQuizById = async (quizId: string): Promise<boolean> => {
+export async function deleteUserQuizById(quizId: string): Promise<boolean> {
     const token = sessionStorage.getItem('token')
     const settings = {
       method: 'DELETE',
@@ -20,4 +20,4 @@ export const deleteUserQuizById = async (quizId: string): Promise<boolean> => {
       console.error(error);
       return false;
     }
-  };
+}

@@ -40,7 +40,7 @@ function Quizzes() {
       container: mapContainer.current,
       style: 'mapbox://styles/josse123/clm929sj5012g01quf59se9j1',
       center: [selectedCoords[0].longitude, selectedCoords[0].latitude],
-      zoom: 12,
+      zoom: 10,
     });
 
     if(markerRef.current){
@@ -95,7 +95,7 @@ function Quizzes() {
   }
 
   return (
-    <div>
+    <div className='quizzes__container--big'>
       <h2 className='quizzes__title'>All quizzes</h2>
       {errorMessage && (
         <div>
@@ -103,7 +103,7 @@ function Quizzes() {
         </div>
       )}
        {showMap && (
-      <div className='map-container'ref={mapContainer} style={{ height: '500px' }}></div>
+      <div className='map' ref={mapContainer} ></div>
       )}
       {quizzes ? (
         <div className='quizzes-container'>

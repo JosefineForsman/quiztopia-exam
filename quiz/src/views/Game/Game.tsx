@@ -6,7 +6,7 @@ import goback from '../../assets/arrowback.png'
 function Game(){
     const navigate = useNavigate()
     const goBack = () => {
-        navigate('/profil')
+        navigate('/')
       };
     return(
         <section className='game'>
@@ -14,7 +14,7 @@ function Game(){
                 <div>
                     <img src={goback} onClick={goBack} alt="go-back-icon" className='game-go-back' />
                 </div>
-                <h1 className='game__title'>Game on!</h1>
+                <h1 className='game__title'>GAME ON!</h1>
             </header>
             <Quizzes/>
         </section>
