@@ -1,19 +1,54 @@
-.quizzes{
-    border: 1px solid black;
-    list-style: none;
-    background-color: rgba(213, 169, 244, 0.735);
-    color: black;
-    padding: 1rem;
-    width: 500px;
-}
+
   .map-container {
     height: 500px;
-    position: relative; /* Add this property */
-    overflow: hidden; /* Add this property */
+   width: 100%;
 }
-.quizzes-container{
+.quizzes-container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+    flex-wrap: wrap;
+    gap: 1rem; 
+    justify-content: center; 
+  }
+  .quizzes{
+    background-color: #ffffff; 
+    border: 1px solid #cccccc;
+    border-radius: 8px; 
+    padding: 1rem; 
+    width: 200px; 
+    margin: 0.5rem;
+    text-align: center; 
+    cursor: pointer;
+    transition: transform 0.2s ease; 
+  }
+  .quizzes:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  .quizzes__title{
+    font-family: manjari;
+    color:white;
+    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+  }
+  .quizzes__body-text{
+    font-family: poppins;
+    padding:0;
+    margin:0;
+  }
+  .error{
+    font-family: manjari;
+    color:white;
+    text-align: center;
+    
+  }
+  .quizzes__title{
+    font-family: manjari;
+    color:white;
+    text-shadow: 2px 2px 5px rgb(0, 0, 0);
+    text-align: center;
+  }
+  
+  .quizzes__body-text {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #666666;
+  }

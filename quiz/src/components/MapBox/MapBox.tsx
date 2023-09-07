@@ -16,7 +16,7 @@ function MapBox({setNewLng, setNewLat}: MapBoxProps) {
   
     const [lat, setLat] = useState<number>(latitude);
     const [lng, setLng] = useState<number>(longitude);
-    const [zoom, setZoom] = useState<number>(9);
+    const [zoom, setZoom] = useState<number>(10);
     const [markers, setMarkers] = useState<mapboxgl.LngLat[]>([]);
     const [errorMessage, setErrorMessage] = useState<string>('');
 
@@ -29,21 +29,21 @@ function MapBox({setNewLng, setNewLat}: MapBoxProps) {
 
   useEffect(() => {
     if (mapRef.current || !mapContainer.current) return;
-
-    mapRef.current = new MapGl({
-      container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/streets-v12',
-      center: [lng, lat],
-      zoom: zoom
+    
+    try{
+      mapRef.current = new MapGl({
+        container: mapContainer.current,
+        style: 'mapbox://styles/josse123/clm929sj5012g01quf59se9j1',
+        center: [lng, lat],
+        zoom: zoom
     });
-
     const map: MapGl = mapRef.current;
 
     if (markerRef.current) {
       markerRef.current.remove();
     }
 
-    markerRef.current = new mapboxgl.Marker().setLngLat([lng, lat]).addTo(map);
+     new mapboxgl.Marker({ color: '#842d8d' }).setLngLat([lng, lat]).addTo(map);
 
     map.on('move', () => {
       const position = map.getCenter();
@@ -58,13 +58,18 @@ function MapBox({setNewLng, setNewLat}: MapBoxProps) {
       console.log('Clicked coordinates:', e.lngLat);
       setMarkers([...markers, e.lngLat]);
     });
+    } catch (error){
+      setErrorMessage('An error occured while initializing the map')
+    }
+
+
+
   }, [lng, lat, zoom, setLng, setLat, setZoom, setNewLat, setNewLng]);
-  console.log(markers)
 
   useEffect(() => {
     if (mapRef.current && markers.length > 0) {
       markers.forEach((markerCoords) => (
-        new mapboxgl.Marker()
+        new mapboxgl.Marker({color: '#11adb5'})
           .setLngLat(markerCoords)
           .addTo(mapRef.current as MapGl)
       ));
@@ -73,10 +78,9 @@ function MapBox({setNewLng, setNewLat}: MapBoxProps) {
 
   return (
     <section className='mapbox'>
-      <p>Mapbox</p>
-      {errorMessage && <p>{errorMessage}</p>}
+      {errorMessage && <p className='error'>{errorMessage}</p>}
       <div ref={mapContainer} style={{ height: '500px' }} className='map-container'></div>
-      <p>Center position: {lat} lat, {lng} long:</p>
+      <p className='error'>Your start position: latitude: {lat}  longitude: {lng}</p>
     </section>
   );
 }

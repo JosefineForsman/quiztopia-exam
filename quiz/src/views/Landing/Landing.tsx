@@ -1,28 +1,14 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import LoginUser from '../../components/LoginUser/LoginUser';
 import CreateUser from '../../components/CreateUser/CreateUser';
-import { getPosition } from '../../Api/geolocation';
-import { getAllQuizzes } from '../../Api/getAllquizzes';
-import map from '../../assets/karta.svg'
+import { getPosition } from '../../fetch/geolocation';
+import { getAllQuizzes } from '../../fetch/getAllquizzes';
+
 import './Landing.css';
 
 function Landing() {
-  const [showLoginUser, setShowLoginUser] = useState(false);
-  const [showCreateUser, setShowCreateUser] = useState(false);
 
   const navigate = useNavigate();
   getPosition()
-
-  const handleLoginClick = () => {
-    setShowLoginUser(!showLoginUser);
-    setShowCreateUser(false);
-  };
-
-  const handleSignUpClick = () => {
-    setShowLoginUser(false);
-    setShowCreateUser(!showCreateUser);
-  };
 
   const handlePlayNow = async () =>{
     navigate('/game')
@@ -32,15 +18,13 @@ function Landing() {
   return (
     <section className="landing" >
       <header>
-        <h1 className='landing__title'>QUIZTOPIA</h1>
+        <h1 className='text__title'>QUIZTOPIA</h1>
+        <p className='landing__sub-title'>Are you ready to play some quizzes?</p>
       </header>
       <aside className='landing-container'>
-          <button className='landing-btn' onClick={handleLoginClick}>LOG IN</button>
-          <button className='landing-btn' onClick={handleSignUpClick}>SIGN UP</button>
+          <CreateUser />
           <button className='landing-btn' onClick={handlePlayNow}>PLAY NOW</button>
-      </aside>
-          {showCreateUser && <CreateUser />}  
-          {showLoginUser && <LoginUser/>}
+      </aside> 
     </section>
   );
 }

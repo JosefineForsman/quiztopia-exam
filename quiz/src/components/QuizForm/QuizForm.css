@@ -1,0 +1,30 @@
+.quiz-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.quiz-form__input{
+    width: 250px;
+    padding:8px;
+    margin-bottom: 9px;
+    font-family: poppins;
+    border: 1px solid rgba(0, 0, 0, 0.227);
+    color: rgba(0, 0, 0, 0.362);
+}
+.quiz-form__btn{
+    background-color: white;
+    border:none;
+    padding: 9.5px;
+    background-color: rgb(99, 20, 110);
+    color:white;
+    font-family: poppins;
+    margin-bottom: 2rem;
+}
+.quiz-form__btn:hover{
+    background-color: rgb(139, 18, 155);
+    cursor:pointer;
+}
+.quiz-form__message{
+    font-family: poppins;
+}

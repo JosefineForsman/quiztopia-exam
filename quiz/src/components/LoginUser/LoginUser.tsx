@@ -1,6 +1,6 @@
 import './LoginUser.css';
 import { SuccessLogin } from '../../interfaces';
-import { logInUser } from '../../Api/signUpUser';
+import { logInUser } from '../../fetch/signUpUser';
 import { useNavigate} from 'react-router-dom';
 import { useState } from 'react';
 import login from '../../assets/loginpurple.png'

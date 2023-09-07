@@ -8,7 +8,7 @@
 }
 .create-user__btn{
     width: 150px;
-    background-color: rgb(175, 37, 217);
+    background-color: #842d8d;
     color:white;
     border-radius: 50px;
     padding: 10px;
@@ -26,7 +26,7 @@
     width: 4rem;
 }
 .create-user__container{
-    width: 600px;
+    width: 500px;
     height: 500px;
     background-color: white;
     border-radius: 10px;
@@ -55,6 +55,9 @@
     color: rgba(0, 0, 0, 0.362);
     font-family: poppins;
     margin-left:10px;
+}
+.create-user__login-btn:hover{
+    cursor:pointer;
 }
 .create-user__title{
     font-family: poppins;

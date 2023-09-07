@@ -1,6 +1,6 @@
 import './QuizForm.css';
 import { useState } from 'react';
-import { sendQuizQuestion } from '../../Api/createQuestion';
+import { sendQuizQuestion } from '../../fetch/createQuestion';
 
 interface QuizFormProps{
     newLng: number;
@@ -11,6 +11,7 @@ interface QuizFormProps{
 function QuizForm({newLng,newLat}: QuizFormProps){
     const [question, setQuestion] = useState<string>('');
     const [answer, setAnswer] = useState<string>('');
+    const [message, setMessage] =useState<string>('');
 
     const handleQuestion = async () => {
         console.log('handleQuestion called'); 
@@ -23,9 +24,12 @@ function QuizForm({newLng,newLat}: QuizFormProps){
               sessionStorage.setItem('question', question);
               sessionStorage.setItem('answer', answer)
               await sendQuizQuestion(quizId, question, answer,newLngString, newLatString);
+              setMessage('Question created successfully!');
+              setQuestion(''); 
+              setAnswer('');
               
             } else {
-                console.log('något saknas')
+                setMessage('Requires input from question, location & answer')
             }
             console.log(`Latitude: ${newLatString}, Longitude: ${newLngString}, QuizId: ${quizId}`, answer, question); // Add this line
         } catch (error) {
@@ -35,12 +39,17 @@ function QuizForm({newLng,newLat}: QuizFormProps){
 
     return(
         <section className='quiz-form'>
-            <p>Quiz Form Component</p>
-            <input type="text" placeholder='Question:'
-            onChange={(e) => setQuestion(e.target.value)} />
-            <input type="text" placeholder='Answer:'
-            onChange={(e) => setAnswer(e.target.value)} />
-            <button onClick={handleQuestion}>Save </button>
+            <aside className='quiz-form__text-title'>
+                <h3 className='create-user__title'>Let's add some questions!</h3>
+            </aside>
+            <div>
+                <input className='quiz-form__input'type="text" placeholder='Question:'
+                onChange={(e) => setQuestion(e.target.value)} />
+                <input className='quiz-form__input' type="text" placeholder='Answer:'
+                onChange={(e) => setAnswer(e.target.value)} />
+                <button className='quiz-form__btn'onClick={handleQuestion}>Save </button>
+                {message && <p className='quiz-form__message'>{message}</p>}
+            </div>
         </section>
     )
 }

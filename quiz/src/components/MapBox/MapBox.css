@@ -1,5 +1,12 @@
 .map-container {
     height: 500px;
-    position: relative; /* Add this property */
-    overflow: hidden; /* Add this property */
-}
+    width: 100%;
+  }
+  .mapbox {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.457);
+    color: white;
+  }

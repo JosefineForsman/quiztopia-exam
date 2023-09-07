@@ -14,7 +14,10 @@ function Form(){
 
     return(
         <section className='form'>
-            <p>Form View / ADD</p>
+            <header className='form-header'>
+                <h1 className='text__title'>QUIZTOPIA</h1>
+                <button className='form-btn' onClick={goToMyProfil}>My profil</button>
+            </header>
             <article className='quiz-form__container'>
                 <QuizForm newLat= {newLat} newLng={newLng} setNewLng={setNewLng} setNewLat={setNewLat}/>
             </article>
@@ -22,7 +25,6 @@ function Form(){
                 <MapBox setNewLng={setNewLng} setNewLat={setNewLat}/>
             </aside>
 
-            <button onClick={goToMyProfil}>My profil</button>
         </section>
     )
 }
