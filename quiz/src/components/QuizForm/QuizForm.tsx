@@ -43,9 +43,9 @@ function QuizForm({newLng,newLat}: QuizFormProps){
                 <h3 className='create-user__title'>Let's add some questions!</h3>
             </aside>
             <div>
-                <input className='quiz-form__input'type="text" placeholder='Question:'
+                <input className='quiz-form__input'type="text" value={question} placeholder='Question:'
                 onChange={(e) => setQuestion(e.target.value)} />
-                <input className='quiz-form__input' type="text" placeholder='Answer:'
+                <input className='quiz-form__input' type="text" value={answer} placeholder='Answer:'
                 onChange={(e) => setAnswer(e.target.value)} />
                 <button className='quiz-form__btn'onClick={handleQuestion}>Save </button>
                 {message && <p className='quiz-form__message'>{message}</p>}
