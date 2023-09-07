@@ -7,6 +7,13 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.457);
     color: white;
   }
+  @media (max-width: 768px) {
+    .map-container {
+        height: 300px;
+    }
+    .mapbox {
+        padding: 10px; 
+    }
+}

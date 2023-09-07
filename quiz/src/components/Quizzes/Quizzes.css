@@ -1,6 +1,5 @@
-
-  .map-container {
-    height: 500px;
+.map-container {
+   height: 500px;
    width: 100%;
 }
 .quizzes-container {
@@ -37,8 +36,7 @@
   .error{
     font-family: manjari;
     color:white;
-    text-align: center;
-    
+    text-align: center; 
   }
   .quizzes__title{
     font-family: manjari;
@@ -46,9 +44,21 @@
     text-shadow: 2px 2px 5px rgb(0, 0, 0);
     text-align: center;
   }
-  
   .quizzes__body-text {
     font-family: Arial, sans-serif;
     font-size: 14px;
     color: #666666;
+  }
+  @media (max-width: 500px) {
+    .map-container {
+      height: 300px; 
+      padding:10px;
+    }
+    .quizzes {
+      width: 80%;
+      margin: 0.5rem ; 
+    }
+    .quizzes-container{
+        gap:0;
+    }
   }

@@ -56,3 +56,17 @@ header{
     justify-content: center;
     align-items: center;
 }
+.landing__error-message{
+    font-family: poppins;
+    color:white;
+}
+@media (max-width: 500px) {
+    .landing__sub-title {
+        width: 100%;
+    }
+    .landing-btn {
+        width: 70%;
+        margin-right: 0; 
+        padding: 10px 5px;
+    }
+}

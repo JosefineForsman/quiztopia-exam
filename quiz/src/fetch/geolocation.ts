@@ -17,7 +17,7 @@ async function getPosition(): Promise<Coordinates>{
                 console.log(position)
             }, error=>{
                 reject(error.message)
-                console.log('du har fått fel', error)
+                console.log('location is not on', error)
             })
         } else{
             reject('Please upgrade your browser to use this app')

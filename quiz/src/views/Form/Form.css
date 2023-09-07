@@ -4,13 +4,11 @@
     background-image: linear-gradient(to bottom, #11adb5, #307b9b, #414b67, #2e2530, #000000);
     height: 100vh;
 }
-
 .quiz-form__container,
 .text__title,
 .form-btn {
     color: white;
 }
-
 .form-btn {
     width: 100px;
     padding: 10px;
@@ -22,13 +20,31 @@
     margin-top: 1.7rem;
     margin-left: 3rem;
 }
-
 .form-btn:hover {
     background-color: rgb(125, 10, 141);
     cursor: pointer;
 }
-
 .form-header {
     display: flex;
     flex-direction: row;
+}
+@media (max-width: 768px) {
+    .form {
+        padding: 10px; 
+    } 
+    .form-btn {
+        margin-left:0;
+        width: 90%;
+    }  
+    .form-header {
+        flex-direction: column; 
+        justify-content: center;
+        align-items: center;
+    }
+    .text__title{
+        font-size: 2.5rem;
+    }
+    .create-user__title{
+        font-size: 1rem;
+    }
 }

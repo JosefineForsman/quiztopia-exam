@@ -28,3 +28,11 @@
 .quiz-form__message{
     font-family: poppins;
 }
+@media (max-width: 500px) {
+    .quiz-form__input {
+        width: 95%;
+    }
+    .quiz-form__btn {
+        width: 100%;
+    }
+}

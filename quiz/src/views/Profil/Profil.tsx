@@ -68,7 +68,7 @@ function Profil(){
                   <li>Add as many questions as you'd like to your quiz.</li>
                   <li>You're done!</li>
                 </ol>
-                <aside>
+                <aside className='profil__add-question'>
                   <input className='profil__input' type="text" placeholder='Quiz name:'
                   value={quizName}
                   onChange={getQuizName} />

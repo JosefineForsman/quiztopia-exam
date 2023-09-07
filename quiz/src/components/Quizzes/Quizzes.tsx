@@ -19,7 +19,6 @@ function Quizzes() {
   const markerRef = useRef<mapboxgl.Marker | null>(null)
   const mapContainer = useRef<HTMLDivElement>(null);
 
-
   useEffect(() => {
     const fetchQuizzes = async () => {
       try {
@@ -104,13 +103,13 @@ function Quizzes() {
         </div>
       )}
        {showMap && (
-      <div ref={mapContainer} style={{ height: '500px' }}></div>
+      <div className='map-container'ref={mapContainer} style={{ height: '500px' }}></div>
       )}
       {quizzes ? (
         <div className='quizzes-container'>
           {quizzes.map((quiz, index) => (
             <aside
-            className={`quizzes ${index % 5 === 0 ? 'quiz-blue' : index % 2 === 1 ? 'quiz-red' : 'quiz-green'}`}
+            className={'quizzes'}
               key={index}
               onClick={ ()=> handleQuiz(quiz) }
             >
