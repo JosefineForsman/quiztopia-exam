@@ -31,11 +31,10 @@ function QuizForm({newLng,newLat}: QuizFormProps){
             } else {
                 setMessage('Requires input from question, location & answer')
             }
-            console.log(`Latitude: ${newLatString}, Longitude: ${newLngString}, QuizId: ${quizId}`, answer, question); // Add this line
         } catch (error) {
-            console.log('Error:' , error)
-        }
-    };
+             console.log('Error:' , error)
+    }
+};
 
     return(
         <section className='quiz-form'>

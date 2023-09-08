@@ -10,7 +10,7 @@ interface MapBoxProps {
   }
 
 function MapBox({setNewLng, setNewLat}: MapBoxProps) {
-    // Hämta värdet för latitud från sessionStorage och konvertera det till ett tal
+    // Hämta värdet för latitud från sessionStorage och konvertera det till ett nummer.
     const latitude = parseFloat(sessionStorage.getItem('latitude')?.toString() ?? '') || 0;
     const longitude = parseFloat(sessionStorage.getItem('longitude')?.toString() ?? '') || 0;
   
@@ -19,9 +19,6 @@ function MapBox({setNewLng, setNewLat}: MapBoxProps) {
     const [zoom, setZoom] = useState<number>(10);
     const [markers, setMarkers] = useState<mapboxgl.LngLat[]>([]);
     const [errorMessage, setErrorMessage] = useState<string>('');
-
-    console.log(lat);
-    console.log(lng);
 
     const mapContainer = useRef<HTMLDivElement>(null);
     const mapRef = useRef<MapGl | null>(null);
@@ -55,15 +52,11 @@ function MapBox({setNewLng, setNewLat}: MapBoxProps) {
     map.on('click', (e) => {
       setNewLat(e.lngLat.lat);
       setNewLng(e.lngLat.lng);
-      console.log('Clicked coordinates:', e.lngLat);
       setMarkers([...markers, e.lngLat]);
     });
     } catch (error){
       setErrorMessage('An error occured while initializing the map')
     }
-
-
-
   }, [lng, lat, zoom, setLng, setLat, setZoom, setNewLat, setNewLng]);
 
   useEffect(() => {

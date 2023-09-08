@@ -17,8 +17,8 @@
     font-family: poppins;
     background-color:  rgb(99, 20, 110);
     color: white;
-    margin-top: 1.7rem;
-    margin-left: 3rem;
+    margin-top:8px;
+    margin-left: 2rem;
 }
 .form-btn:hover {
     background-color: rgb(125, 10, 141);
@@ -26,7 +26,11 @@
 }
 .form-header {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+}
+.form__container--btns{
+    padding:0;
+    margin:0;
 }
 @media (max-width: 768px) {
     .form {

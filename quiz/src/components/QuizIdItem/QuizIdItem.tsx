@@ -20,7 +20,6 @@ function QuizIdItem(){
       
             const filteredQuizzes = quizzes.filter((quiz) => quiz.username === username);
             setMyQuizzes(filteredQuizzes);
-            console.log("Filtered quizzes:", filteredQuizzes);
           } catch (error) {
             console.error("Error fetching quizzes:", error);
           }
@@ -32,25 +31,21 @@ function QuizIdItem(){
       const deleteUserQuiz = async (selectedQuizId: string) => {
         try {
           const success = await deleteUserQuizById(selectedQuizId);
-          console.log("deleteUserQuizById success:", success);
       
           if (success) {
-            // Ta bort quizet från myQuizzes om det lyckades radera
             setMyQuizzes((prevQuizzes) => prevQuizzes.filter((quiz) => quiz.quizId !== selectedQuizId));
             setDeleteMessage('Quiz is now deleted');
           } else {
-            console.log("Quiz deletion failed.");
             setDeleteMessage('Failed to delete this quiz.')
           }
         } catch (error) {
           console.error("Error deleting quiz:", error);
         }
-    
       };
     
       return( 
           <section className='my-quizzes'>
-            <h3 className='my-guizzes__subtitle'>My quizzes:</h3>
+            <h3 className='my-quizzes__subtitle'>My quizzes:</h3>
             {myQuizzes.map((quiz, index) => (
             <div className='my-quizzes__container'key={index}>
               <p className='my-quizzes__title'>Quiz name: {quiz.quizId}</p>

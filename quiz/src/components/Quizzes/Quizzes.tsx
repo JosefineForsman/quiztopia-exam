@@ -24,7 +24,6 @@ function Quizzes() {
       try {
         const data: Quizzes = await getAllQuizzes();
         setQuizzes(data.quizzes);
-        console.log(quizzes);
       } catch (error) {
         console.error('Error fetching quizzes:', error);
         setErrorMessage('Something went wrong')
@@ -52,9 +51,7 @@ function Quizzes() {
       .setLngLat([coords.longitude, coords.latitude])
       .addTo(mapRef.current as MapGl);
       setMarkers(markers);
-      console.log(coords.longitude, coords.latitude)
     });
-
   }, [selectedCoords]);
 
   const handleQuiz = (quiz:Quiz)=>{
@@ -84,12 +81,11 @@ function Quizzes() {
         setErrorShown(true);
         setSelectedCoords([]);
         setShowMap(false);
-      }else{
+      } else {
         setSelectedCoords(coords);
         setShowMap(true);
         setErrorMessage('');
         setErrorShown(false);
-
       }
     }
   }
@@ -114,7 +110,7 @@ function Quizzes() {
               onClick={ ()=> handleQuiz(quiz) }
             >
               <p className='quizzes__body-text'>Username: {quiz.username}</p>
-              <p className='quizzes__body-text'>Creator: {quiz.quizId}</p>
+              <p className='quizzes__body-text'>Quiz name: {quiz.quizId}</p>
             </aside>
           ))}
           </div>

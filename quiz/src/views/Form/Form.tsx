@@ -19,8 +19,10 @@ function Form(){
         <section className='form'>
             <header className='form-header'>
                 <h1 className='text__title'>QUIZTOPIA</h1>
-                <button className='form-btn' onClick={goToMyProfil}>My profil</button>
-                <button className='form-btn' onClick={goToPlay}>Lets play!</button>
+                <div className='form__container--btns'>
+                    <button className='form-btn' onClick={goToMyProfil}>My profil</button>
+                    <button className='form-btn' onClick={goToPlay}>Lets play!</button>
+                </div>
             </header>
             <article className='quiz-form__container'>
                 <QuizForm newLat= {newLat} newLng={newLng} setNewLng={setNewLng} setNewLat={setNewLat}/>

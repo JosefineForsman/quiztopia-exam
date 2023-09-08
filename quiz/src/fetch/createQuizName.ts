@@ -1,4 +1,3 @@
-
 export async function createQuiz(quizName:string) {
     const token = sessionStorage.getItem('token');
   

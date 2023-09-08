@@ -15,10 +15,8 @@ function LoginUser() {
 
   const logIn = async () => {
     const data: SuccessLogin = await logInUser(username, password);
-    console.log(data);
 
     if (data.success) {
-      setMessage('You are now signed in.');
       sessionStorage.setItem('username', username)
       navigate('/profil'); 
     }

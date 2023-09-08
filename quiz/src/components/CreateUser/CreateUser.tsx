@@ -16,7 +16,6 @@ function CreateUser() {
 
     if (success) {
       setSuccess(true);
-      setMessage(`User ${username} is now created`);
       sessionStorage.setItem('username', username);
       setShowLogin(true)
     } else {

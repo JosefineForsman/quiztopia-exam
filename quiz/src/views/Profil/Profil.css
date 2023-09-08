@@ -9,15 +9,13 @@ body, html {
     width: 100vw;
     height: 100vh;
     background-image: linear-gradient(to right top, #11adb5, #307b9b, #414b67, #2e2530, #000000);
-  }
-  
+  } 
   .profil-container {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     margin-top: 2rem;
-  }
-  
+  } 
   .profil__text {
     color: white;
     font-family: manjari;
@@ -25,7 +23,6 @@ body, html {
     text-shadow: 2px 2px 5px rgb(0, 0, 0);
     margin-top: 20px;
   }
-  
   .profil__input {
     width: 250px;
     padding: 8px;
@@ -36,7 +33,6 @@ body, html {
     background-color: transparent;
     border-radius: 5px;
   }
-  
   .profil__add-btn {
     background-color: rgba(118, 15, 136, 0.817);
     border: none;
@@ -46,8 +42,7 @@ body, html {
     margin-bottom: 2rem;
     cursor: pointer;
     border-radius: 5px;
-  }
-  
+  } 
   .profil__add-quiz {
     background-color: rgba(255, 255, 255, 0.9);
     width: 500px;
@@ -61,20 +56,17 @@ body, html {
     display: flex;
     justify-content: center;
   }
-  
   .profil__body-text {
     font-family: poppins;
     color: rgba(0, 0, 0, 0.6);
     margin-top: 19px;
   }
-  
   .profil__add-quiz li {
     font-family: poppins;
     color: rgba(0, 0, 0, 0.6);
     font-size: 14px;
     width: 100%;
-  }
-  
+  } 
   .profil-btn {
     border: none;
     background-color: #11adb5;
@@ -87,16 +79,13 @@ body, html {
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-  
   .profil-btn:hover {
     background-color: #0c8f99;
   }
-  
   ol {
     padding: 0;
     margin-bottom: 2rem;
   }
-  
   .profil__title {
     color: #11adb5;
     font-family: aldrich;
@@ -104,8 +93,8 @@ body, html {
     text-shadow: 2px 2px 5px rgb(99, 20, 110);
     margin-top: 50px;
     margin-bottom: 10px;
-  }
-  
+    text-align: center;
+  } 
   .profil__header {
     display: flex;
     flex-direction: row;

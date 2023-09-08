@@ -17,8 +17,6 @@ function Profil(){
 
     const addNewQuiz = () => {
         createQuiz(quizName);
-        console.log(quizName);
-
         sessionStorage.setItem('quizId', quizName);
         navigate('/form')
       };
@@ -37,7 +35,7 @@ function Profil(){
     return(
         <section className="profil">
           <header className='profil__header'>
-            <aside>
+            <aside className='profil__header--container'>
                 <h1 className='profil__title'>QUIZTOPIA</h1>
                 <h3 className='profil__text'>Welcome to your profil {name}!</h3>
             </aside>
@@ -66,7 +64,6 @@ function Profil(){
                 {showQuizIdItem && <QuizIdItem/>}
             </div>
         </section>
-
     )
 }
 export default Profil;

@@ -7,12 +7,13 @@
     border-radius: 10px;
     padding:10px;
     border: 1px solid white;
+    width: 100%;
 }
 .my-quizzes__title{
     font-family: poppins;
     margin:0;
 }
-.my-guizzes__subtitle{
+.my-quizzes__subtitle{
     font-family: manjari;
     color: white;
     font-size:25px;
@@ -31,4 +32,13 @@
 .my-quizzes__delete-message{
     font-family: poppins;
     color:white;
+    width: 100%;
+}
+.my-quizzes{
+    width: 100%;
+}
+@media (max-width: 500px) {
+    .my-quizzes__subtitle {
+        font-size:20px;
+    }
 }
